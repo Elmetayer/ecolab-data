@@ -40,7 +40,30 @@ numérique . internet . durée journalière:
     modérément: 2
     je ne décroche pas: 8
 
-    
+numérique . services données . présent:
+  note: Les services de données type mail ou cloud fonctionnent même si l'on est "offline", et utilisent donc de l'énergie principalement de manière proportionnelle à la taille des données
+  question: Utilisez-vous des services de données en ligne ?
+  description: Par exemple, données stockées sur un fournisseur de mail type gmail, données stockées sur un could type icloud ou google drive
+  par défaut: non
+numérique . services données . quantité:
+  question: Quelle quantité de donnée stockez-vous sur les services de type mail ou cloud ?
+  description : estimez le total en giga-octets
+  applicable si: présent
+  unité: giga-octet
+  par défaut: 5
+  suggestions:
+    aucune donnée: 0
+    très peu: moins de 5 Go
+    beaucoup: entre 5 et 20 Go
+    enormément : plus de 20 Go
+numérique . services données:
+  applicable si: présent
+  formule: quantité * 1.4
+  unité: kgCO2e
+  référence : 
+  - https://medium.com/stanford-magazine/carbon-and-the-cloud-d6f481b79dfe
+  - https://www.electricitymap.org/ranking
+  note: estimation de 1400gCO₂eq/Go (cf. commentaires), à affiner
 
 numérique . appareil photo . présent:
   note: On range l'appareil photo dans la catégorie numérique vu la rareté des appareils argentiques aujourd'hui.
